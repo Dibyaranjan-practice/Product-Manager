@@ -1,0 +1,17 @@
+.container_header
+{
+    background-color: rgb(226, 232, 238);
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    box-sizing: border-box;
+    padding: 10px 20px;
+}
+.header_item, .header_item a
+{
+    color: rgb(242, 82, 8);
+    text-decoration: none;
+}
+a{
+    padding-top: 15px ;
+}

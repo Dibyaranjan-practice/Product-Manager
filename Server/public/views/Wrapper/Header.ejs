@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="/css/Wrapper/Header.css" />
+<div class="container_header">
+        <div class="header_item">
+            <a href="/">Home</a>
+        </div>
+        <div class="header_item">
+            <a href="/Contact">Contact</a>
+        </div>
+        <div class="header_item">
+            <a href="/Products">Products</a>
+        </div>
+        <% if(!isLoggedIn){%>
+        <div class="header_item">
+            <a href="/user/login">Login</a>
+        </div>
+        <div class="header_item">
+            <a href="/user/signup">SignUp</a>
+        </div>
+        <%}%>
+</div>
