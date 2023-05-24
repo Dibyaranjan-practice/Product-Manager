@@ -1,0 +1,10 @@
+.products
+{
+    position: relative;
+    box-sizing: border-box;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}

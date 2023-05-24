@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+</head>
+<body>
+    <%- include("../Wrapper/Header.ejs",{isLoggedIn:  isLoggedIn }) %>
+    <% if(message && message=="s"){%>
+            <p>Product Created Successfully</p>
+        <%}%>
+    <% if(message && message=="f"){%>
+            <p>Product Creation Failed</p>
+        <%}%>
+    <form method="POST" action="/Products/create">
+        <label for="name">Name</label>
+        <input type="text" name="name" required><br />
+        <label for="description">Description</label>
+        <input type="text" name="description" required><br />
+        <label for="price">Price</label>
+        <input type="number" name="price" required step="0.01" min="0"><br />
+        <input type="submit" value="Create" />
+        </form>
+</body>
+</html>

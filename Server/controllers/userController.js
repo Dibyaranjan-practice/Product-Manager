@@ -3,7 +3,13 @@ const bcrypt = require("bcrypt");
 const userModel = require("./../models/userModel");
 
 exports.getLogin = (req, res, next) => {
-  res.render("Login.ejs", { message: "", isLoggedIn: req.session.isLoggedIn });
+  if (req.session.isLoggedIn) {
+    res.render("Home", { isLoggedIn: req.session.isLoggedIn });
+  }
+  res.render("user/Login.ejs", {
+    message: "",
+    isLoggedIn: req.session.isLoggedIn,
+  });
 };
 
 exports.postLogin = async (req, res, next) => {
@@ -18,17 +24,24 @@ exports.postLogin = async (req, res, next) => {
     )
     .catch((error) => {
       result = "failure";
-      console.log(error);
     });
   if (result === "success") {
     req.session.isLoggedIn = true;
     return res.redirect("/");
   }
-  res.render("Login", { message: result, isLoggedIn: req.session.isLoggedIn });
+  res.render("user/Login", {
+    message: result,
+    isLoggedIn: req.session.isLoggedIn,
+  });
+};
+
+exports.getLogout = (req, res, next) => {
+  req.session.destroy();
+  res.render("user/Login", { message: "", isLoggedIn: false });
 };
 
 exports.getCreateUser = (req, res, next) => {
-  res.render("CreateUser.ejs", {
+  res.render("user/CreateUser.ejs", {
     message: "",
     isLoggedIn: req.session.isLoggedIn,
   });
@@ -52,7 +65,13 @@ exports.postCreateUser = async (req, res, next) => {
     .catch((err) => (message = err));
   console.log(message);
   if (message === "success") {
-    return res.render("Login.ejs", { isLoggedIn: req.session.isLoggedIn });
+    return res.render("user/Login.ejs", {
+      isLoggedIn: req.session.isLoggedIn,
+      message,
+    });
   }
-  res.render("CreateUser.ejs", { message, isLoggedIn: req.session.isLoggedIn });
+  res.render("user/CreateUser.ejs", {
+    message,
+    isLoggedIn: req.session.isLoggedIn,
+  });
 };
