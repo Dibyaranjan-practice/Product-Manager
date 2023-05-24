@@ -7,7 +7,7 @@
             <a href="/Contact">Contact</a>
         </div>
         <div class="header_item">
-            <a href="/Products">Products</a>
+            <a href="/Products/create">Products</a>
         </div>
         <% if(!isLoggedIn){%>
         <div class="header_item">
@@ -16,5 +16,10 @@
         <div class="header_item">
             <a href="/user/signup">SignUp</a>
         </div>
-        <%}%>
+        <%} else {%>
+            <div class="header_item">
+                <a href="/user/logout">Logout</a>
+            </div>
+
+            <%}%>
 </div>
